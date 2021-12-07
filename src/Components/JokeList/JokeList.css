@@ -1,0 +1,46 @@
+h1 {
+  font-size: 3rem;
+}
+
+.JokeList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  width: 75%;
+}
+
+.JokeList-jokes {
+  overflow: scroll;
+  height: 75%;
+  background-color: rgba(255, 255, 255, 0.459);
+}
+
+.JokeList-jokes::-webkit-scrollbar {
+  display: none;
+}
+
+.Joke-side-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  height: 100%;
+  width: 50%;
+  border-radius: 2%;
+  background-color: #85ffbd;
+}
+
+button {
+  background-color: #85ffbd;
+  border: 1px solid black;
+  border-radius: 3%;
+  width: 7rem;
+  height: 2rem;
+  transition: 0.2s ease-in;
+}
+
+button:hover {
+  background-color: #fffb7d;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Joke from "../Joke/Joke";
+import "./JokeList.css";
 
 const API_URL = "https://icanhazdadjoke.com/";
 
@@ -14,15 +15,12 @@ class JokeList extends Component {
   }
 
   async componentDidMount() {
-    const headers = {
-      headers: {
-        Accept: "application/json",
-      },
-    };
     let jokes = [];
     while (jokes.length < this.props.numJokesToGet) {
-      let response = await axios.get(API_URL, headers);
-      jokes.push(response.data.joke);
+      let response = await axios.get(API_URL, {
+        headers: { Accept: "application/json" },
+      });
+      jokes.push({ joke: response.data.joke, id: response.data.id });
     }
     this.setState({ jokes: jokes });
   }
@@ -30,10 +28,13 @@ class JokeList extends Component {
   render() {
     return (
       <div className="JokeList">
-        <h1>Dad Jokes</h1>
+        <div class="Joke-side-bar">
+          <h1>Dad Jokes</h1>
+          <button onClick={this.handleClick}>Get More Jokes!</button>
+        </div>
         <div className="JokeList-jokes">
           {this.state.jokes.map((j) => (
-            <div>{j}</div>
+            <Joke jokeText={j.joke} key={j.id} />
           ))}
         </div>
       </div>
